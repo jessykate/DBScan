@@ -3,15 +3,16 @@
 ####################################################
 # Jessy Cowan-Sharp, August 2009
 # References:
-#   1. DBScan Algorithm, from Data Mining Textbook (add ref). 
-#   2. see also wikipedia entry (this implementation is quite similar to
-#      their sudo code).
+#   1. DBScan Algorithm, from Data Mining Textbook 
+#      (Han and Kamber, Data Mining, Concepts and Techniques, 
+#      Second Edition. Chapter 7 section 6.1 (pp.418)). 
+#   2. see also wikipedia entry (this implementation is similar to
+#      their pseudo code): http://en.wikipedia.org/wiki/DBSCAN
 ####################################################
 
 # XXX TODO noise cluster is getting duplicates added. the initial
 # cluster member is getting repeated sometimes-- it's because the
 # point in 'for point in points' is of course a copy. fuckers.
-
 
 # very code-like pseudo-code
 # DBSCAN
@@ -121,7 +122,7 @@ def add_connected(points, all_points, epsilon, min_pts, current_cluster, distanc
         print 'Added points %s' % print_points(cluster_points)
     return cluster_points
 
-def dbscan(points, epsilon, min_pts, distance=_euclidean, debug=False):
+def dbscan(points, epsilon, min_pts, distance=euclidean, debug=False):
     ''' Main dbscan algorithm function. pass in a list of feature
     vectors (most likely a list of lists or a list of arrays), a
     radius epsilon within which to search for neighbouring points, and
